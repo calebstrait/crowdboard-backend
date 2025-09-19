@@ -3,3 +3,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "ads",
 ]
+
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    ...,
+]
