@@ -10,9 +10,9 @@ class Billboard(models.Model):
 
 class Ad(models.Model):
     billboard = models.ForeignKey(Billboard, on_delete=models.CASCADE, related_name="ads")
-    image_url = models.URLField()
     caption = models.CharField(max_length=255, blank=True)
+    cloudflare_id = models.CharField(max_length=100, unique=True)
     votes = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.caption or f"Ad {self.id}"
+    def image_url(self):
+        return f"https://imagedelivery.net/<YOUR_ACCOUNT_HASH>/{self.cloudflare_id}/public"
